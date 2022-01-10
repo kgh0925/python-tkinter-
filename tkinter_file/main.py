@@ -1,26 +1,35 @@
 from tkinter import *
 
+
+def process():
+    temperature = float(e1.get())
+    mytemp = (temperature - 32) * 5 / 9
+    e2.insert(0, str(mytemp))
+
+
+def pro():
+    temperature = float(e2.get())
+    mytemp = (temperature * 1.8) + 32
+    e1.insert(0, str(mytemp))
+
+    
 window = Tk()
-window.title("Kim Geun Ho")
-window.geometry("400x400+100+100")
-rad = IntVar()
-rad1 = Radiobutton(window, text ="chioce1", variable = rad, value = 1)
-rad2 = Radiobutton(window, text ="chioce2", variable = rad, value = 2)
-rad3 = Radiobutton(window, text ="chioce3", variable = rad, value = 3)
-rad1.place(x = 50,y = 10)
-rad2.place(x = 50,y = 30)
-rad3.place(x = 50,y = 50)
 
-chk = IntVar()
-chkb1 = Checkbutton(window, text = "checkbox", variable = chk)
-chkb1.place(x = 150, y=10)
 
-listbox = Listbox(window, selectmode = 'extended', height = 0)
-# selctmod => extended, single
-listbox.insert(0, "Dog")
-listbox.insert(1, "Snake")
-listbox.insert(2, "Tiger")
-listbox.insert(3, "Cat")
-listbox.insert(4, "Rabbit")
-listbox.place(x = 150, y = 50)
+l1 = Label(window, text = "℉", font = "helvetica 16 italic")     
+l2 = Label(window, text = "℃", font = "helvetica 16 italic")
+l1.grid(row = 0, column = 0)
+l2.grid(row = 1, column = 0)
+
+e1 = Entry(window, bg = "yellow", fg = "green")     
+e2 = Entry(window, bg = "yellow", fg = "green")
+e1.grid(row = 0, column = 1)
+e2.grid(row = 1, column = 1)
+
+b1 = Button(window, text = "℉->℃", command = process)
+b2 = Button(window, text = "℃->℉", command = pro)
+b1.grid(row = 2, column = 0)
+b2.grid(row = 2, column = 1)
+
+
 window.mainloop()
